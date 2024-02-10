@@ -1,0 +1,29 @@
+// https://leetcode.com/problems/move-zeroes/
+// TC - O(n), SC - O(1)
+
+class Solution {
+    public void moveZeroes(int[] nums) {
+        int size = nums.length;
+        //if size of array is 0 or have only 1 element return
+        if(size == 0 || size == 1){
+            return;
+        }
+        
+        int nzero = 0;
+        int zero = 0;
+        
+        while( nzero < size){
+        //if the element is not equal to zero swap
+            if (nums[nzero] != 0){
+                int temp = nums[nzero];
+                nums[nzero] = nums[zero];
+                nums[zero] = temp;
+                nzero++;
+                zero++;
+            }
+            else
+                nzero++;
+        }
+        
+    }
+}
