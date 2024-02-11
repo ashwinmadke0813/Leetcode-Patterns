@@ -1,0 +1,26 @@
+// https://leetcode.com/problems/valid-palindrome/
+// TC - O(n) , SC - O(1)
+
+public boolean isPalindrome(String s) {
+    // Convert the input string to lowercase and remove all non-alphanumeric characters
+    String str = s.toLowerCase().replaceAll("[^a-zA-Z0-9]", "");
+    
+    // Initialize two pointers, one at the start and one at the end of the string
+    int i = 0;
+    int j = str.length() - 1;
+    
+    // Iterate through the string from both ends towards the middle
+    while (i < j) {
+        // Compare characters at positions i and j
+        if (str.charAt(i) != str.charAt(j)) {
+            // If characters don't match, return false indicating it's not a palindrome
+            return false;
+        }
+        // Move the pointers towards the middle
+        i++;
+        j--;
+    }
+    
+    // If the loop completes without finding any mismatch, return true indicating it's a palindrome
+    return true;
+}
