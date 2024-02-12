@@ -1,0 +1,35 @@
+//https://leetcode.com/problems/longest-substring-without-repeating-characters/
+// TC - O(n), where n is the length of the input string
+// SC - O(n), because it stores characters from the input string in an ArrayList, and in the worst-case scenario, where all characters are unique, the list size will grow linearly with the size of the input string.
+
+class Solution {
+    public int lengthOfLongestSubstring(String str) {
+       
+        int start = 0;
+        int end = 0;
+        int max_length = 0;
+        
+        // list to store characters in the current substring
+        List<Character> list = new ArrayList<Character>();
+
+        while( end < str.length()){
+        
+            // If the current character is not in the substring
+            if(!list.contains(str.charAt(end))){
+                
+                list.add(str.charAt(end)); // Add the character to the substring
+                end++; // Move towards right
+                max_length = Math.max(max_length,list.size());
+            }
+            else {
+                // If the current character is already in the substring
+                // Remove the character from the start of the substring
+                list.remove(Character.valueOf(str.charAt(start)));
+                start++; // Move towards right
+        
+            }
+            
+        }
+        return max_length; // return maxlength w/o repeating characters
+    }
+}
